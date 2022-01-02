@@ -4,8 +4,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const home = require('./routes/home');
 const router = require('./router');
+const { redirects } = require('./redirect');
 
 // Configuring Dotenv
 dotenv.config({ path: './.env' });
@@ -21,8 +21,8 @@ app.use(bodyParser.json())
 app.use(express.json())
 
 // Routing
-app.get('/', home);
 app.use('/api', router);
+app.use('/', redirects);
 
 
 // Logging Port Info
