@@ -5,7 +5,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const home = require('./routes/home');
-const createLink = require('./routes/createLink');
+const router = require('./router');
 
 // Configuring Dotenv
 dotenv.config({ path: './.env' });
@@ -18,10 +18,11 @@ const port = process.env.PORT;
 
 // Middleware
 app.use(bodyParser.json())
+app.use(express.json())
 
 // Routing
 app.get('/', home);
-app.get('/api/create/', createLink);
+app.use('/api', router);
 
 
 // Logging Port Info
