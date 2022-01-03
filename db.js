@@ -7,6 +7,7 @@ const connectionString = process.env.DATABASE_URL;
 if (connectionString) {
     pool = new Pool({
         connectionString,
+        ssl: process.env.DB_SSL === 1
     })
 }
 else {
