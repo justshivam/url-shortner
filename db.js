@@ -5,10 +5,15 @@ var pool = undefined;
 const connectionString = process.env.DATABASE_URL;
 
 if (connectionString) {
-    pool = new Pool({
+
+    const config = {
         connectionString,
-        ssl: process.env.DB_SSL === 1
-    })
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    }
+
+    pool = new Pool(config);
 }
 else {
     pool = new Pool({
@@ -20,5 +25,6 @@ else {
         ssl: process.env.DB_SSL === 1
     });
 }
+pool.connect();
 
 module.exports = pool;
