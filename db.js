@@ -22,7 +22,6 @@ else {
         database: process.env.DB_NAME,
         host: process.env.DB_HOST,
         port: 5432,
-        ssl: process.env.DB_SSL === 1
     });
 }
 pool.connect();
