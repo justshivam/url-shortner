@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
             if ((await db.query(`SELECT sl FROM refs WHERE sl = '${sl}';`)).rows.length === 0) break;
         };
         await db.query(`INSERT INTO refs VALUES ('${link}','${sl}')`);
-        res.status(200).json({ "message": `Link is created at https://${process.env.URL}/${lqr.rows[0].sl}` });
+        res.status(200).json({ "message": `Link is created at https://${process.env.URL}/${sl}` });
     }
 };
 
